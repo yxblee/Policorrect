@@ -29,7 +29,10 @@ server.post('/api/messages', connector.listen());
 * ---------------------------------------------------------------------------------------- */
 
 // Create your bot with a function to receive messages from the user
-var bot = new builder.UniversalBot(connector);
+// var bot = new builder.UniversalBot(connector);
+var bot = new builder.UniversalBot(connector, {
+    storage: new builder.MemoryBotStorage()
+});
 
 // Make sure you add code to validate these fields
 var luisAppId = process.env.LuisAppId;
