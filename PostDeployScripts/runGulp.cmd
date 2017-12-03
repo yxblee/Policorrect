@@ -1,23 +1,28 @@
 @echo off
 setlocal
 
-set DEPLOYMENT_SOURCE=
-set IN_PLACE_DEPLOYMENT=1
-
-if exist ..\wwwroot\deploy.cmd (
+if exist ..\wwwroot\package.json (
   pushd ..\wwwroot
-  call deploy.cmd
+  echo npm install --production
+  call npm install --production
   popd
 )
 
-rem kick of build of csproj
+for /d %%d in (..\wwwroot\*) do (  
+  echo check %%d
+  pushd %%d
+  if exist package.json (
+    echo npm install --production
+    call npm install --production
+  ) else (
+    echo no package.json found    
+  )
+  popd 
+)
 
 echo record deployment timestamp
 date /t >> ..\deployment.log
 time /t >> ..\deployment.log
 echo ---------------------- >> ..\deployment.log
 echo Deployment done
-
-endlocal
-
 
