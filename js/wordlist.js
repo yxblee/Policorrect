@@ -8,6 +8,11 @@ for (var i = 0; i < 13; i++) {
     govUK[i] = new Array(2);
 }
 
+var tableHeader = new Array(2);
+tableHeader[0] = "Should be avoided";
+tableHeader[1] = "Alternatives";
+
+
 
 // incorrect - correct pair
 CMU[0][0] = "Best man for the job";
@@ -73,3 +78,80 @@ govUK[11][0] = "dwarf; midget";
 govUK[11][1] = "someone with restricted growth or short stature";
 govUK[12][0] = "fits, spells, attacks";
 govUK[12][1] = "seizures";
+
+
+var tableGovUK = document.getElementById("GovUK");
+tableGovUK.setAttribute("class", "table");
+
+var tGovUKtable = document.createElement("table");
+var tGovUKhead = document.createElement("thead");
+var tGovUKbody = document.createElement("tbody");
+
+for (var rcount = 0; rcount < 1; rcount++) {
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+        var cell = document.createElement("th");
+        var tnode = document.createTextNode(tableHeader[j]);
+        
+        cell.appendChild(tnode);
+        row.appendChild(cell);
+    }
+    tGovUKhead.appendChild(row);
+}
+tGovUKtable.appendChild(tGovUKhead);
+
+
+for (var b = 0; b < govUK.length; b++) {
+    var row = document.createElement("tr");
+    
+    for (var a = 0; a < 2 ; a++) {
+        var cell = document.createElement("td");
+        var term = document.createTextNode(govUK[b][a]);
+        cell.appendChild(term);
+        row.appendChild(cell);
+    }
+    tGovUKbody.appendChild(row);
+}
+tGovUKtable.appendChild(tGovUKbody);
+tableGovUK.appendChild(tGovUKtable);
+
+
+
+
+var tableCMU = document.getElementById("CMU");
+tableCMU.setAttribute("class", "table");
+
+var tCMUtable = document.createElement("table");
+var tCMUhead = document.createElement("thead");
+var tCMUbody = document.createElement("tbody");
+
+for (var rcount = 0; rcount < 1; rcount++) {
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+        var cell = document.createElement("th");
+        var tnode = document.createTextNode(tableHeader[j]);
+        
+        cell.appendChild(tnode);
+        row.appendChild(cell);
+    }
+    tCMUhead.appendChild(row);
+}
+tCMUtable.appendChild(tCMUhead);
+
+
+for (var i = 0; i < CMU.length; i++) {
+    var row = document.createElement("tr");
+    
+    for (var j = 0; j < 2 && (CMU[i][j] != null); j++) {
+        var cell = document.createElement("td");
+        var term = document.createTextNode(CMU[i][j]);
+        cell.appendChild(term);
+        row.appendChild(cell);
+    }
+    tCMUbody.appendChild(row);
+}
+tCMUtable.appendChild(tCMUbody);
+tableCMU.appendChild(tCMUtable);
+

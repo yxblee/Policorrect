@@ -35,3 +35,21 @@ body > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+table {
+    width: 100%;
+}
+
+.nav-colour {
+    background-color: #2A2B41;
+    color: #fff;
+}
+
+.font-sans {
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.font-s {
+  font-family: 'Slabo 27px', serif;
+}
